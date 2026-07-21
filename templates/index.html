@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic Auto-Pilot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Left Panel: Input & Status -->
+        <div class="panel left-panel">
+            <header>
+                <h1>🧠 Agentic Auto-Pilot</h1>
+                <p>From prompt to polished deliverable in seconds.</p>
+            </header>
+
+            <div class="input-section">
+                <textarea id="promptInput" placeholder="What would you like me to build, write, or plan?"></textarea>
+                <button id="executeBtn" class="primary-btn">Execute Pipeline</button>
+            </div>
+
+            <div class="sample-prompts">
+                <span>Try a sample:</span>
+                <button class="sample-btn" data-prompt="Create a launch plan for a SaaS time-tracking tool for freelancers">🏢 Business Plan</button>
+                <button class="sample-btn" data-prompt="Write a 3-email drip campaign to convert free-trial users to paid">📧 Email Campaign</button>
+                <button class="sample-btn" data-prompt="Design a feature roadmap for a habit-tracking mobile app">📱 App Blueprint</button>
+                <button class="sample-btn" data-prompt="Outline a 5-part blog series about AI tools for small businesses">📝 Blog Series</button>
+            </div>
+
+            <div class="status-section">
+                <h3>Execution Status</h3>
+                <div class="progress-bar-container">
+                    <div id="globalProgress" class="progress-bar"></div>
+                </div>
+                
+                <div id="taskChecklist" class="checklist">
+                    <!-- Tasks will be injected here -->
+                    <div class="empty-state">Waiting for task breakdown...</div>
+                </div>
+            </div>
+
+            <div class="export-section">
+                <button id="exportMdBtn" class="secondary-btn" disabled>📋 Download Markdown</button>
+                <button id="exportPdfBtn" class="secondary-btn" disabled>📄 Download PDF</button>
+            </div>
+        </div>
+
+        <!-- Right Panel: Terminal Output -->
+        <div class="panel right-panel">
+            <div class="terminal-header">
+                <div class="mac-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="terminal-title">Agent Execution Stream</div>
+            </div>
+            <div id="terminalBody" class="terminal-body">
+                <div class="terminal-line system-msg">System initialized. Waiting for input...</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
